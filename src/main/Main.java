@@ -10,12 +10,13 @@ public class Main {
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
-		window.setTitle("2D Adventure");
+		window.setTitle("2D Adventure"); 
 
 		GamePanel gamePanel = new GamePanel();
 		window.add(gamePanel);
 
-		window.pack();
+		window.pack(); // Faz com que esta janela seja dimensionada para
+		//  se ajustar ao tamanho e layouts preferidos de seus subcomponentes( = GamePanel)
 
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
