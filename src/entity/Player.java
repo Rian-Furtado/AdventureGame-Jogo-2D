@@ -23,11 +23,13 @@ public class Player extends Entity {
 		this.gp = gp;
 		this.keyH = keyH;
 
+		// COLOCAR O BONECO NO CENTRO DA TELA
+		
 		screenX = gp.screenWidth / 2 - (gp.tileSize / 2); // Player Position on the center of screen ( We draw Here ) !
 		screenY = gp.screenHeight / 2 - (gp.tileSize / 2); // Player Position on the center of screen (We draw Here ) !
 
 		solidArea = new Rectangle();
-		solidArea.x = 8;
+		solidArea.x = 8; 
 		solidArea.y = 16;
 		solidArea.width = 32;
 		solidArea.height = 32;
@@ -39,8 +41,8 @@ public class Player extends Entity {
 
 	public void setDefaultValues() {
 
-		worldX = gp.tileSize * 23; // Player Position on the world map !!!
-		worldY = gp.tileSize * 21; // Player Position on the world MAP !!!
+		worldX = gp.tileSize * 23; // Player Position on the world map at first !!!
+		worldY = gp.tileSize * 21; // Player Position on the world MAP at first !!!
 		speed = 4;
 		speed = gp.worldWidth / 600;
 		direction = "down";
@@ -83,13 +85,13 @@ public class Player extends Entity {
 
 			}
 			// CHECK TILE COLLISION
-			collisionOn = false;
+			collisionOn = false; 
 			gp.cChecker.checkTile(this);
  
 			// IF COLLISION IS FALSE, PLAYER CAN MOVE;
 			if (collisionOn == false) {
 
-				switch (direction) {
+				switch (direction) { 
 				case "up":
 					worldY -= speed;
 					break;

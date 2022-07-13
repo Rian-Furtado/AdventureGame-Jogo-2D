@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import entity.Player;
+import object.SuperObject;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -21,7 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public int maxScreenCol = 16;
 	public int maxScreenRow = 12;
 	public int screenWidth = tileSize * maxScreenCol; // 768 pixels
-	public int screenHeight = tileSize * maxScreenRow; // 576 pixels 
+	public int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
 	// WORLD SETTINGS -- OK
 
@@ -38,6 +39,8 @@ public class GamePanel extends JPanel implements Runnable {
 	Thread gameThread;
 	public Player player = new Player(this, keyH);
 	public CollisionChecker cChecker = new CollisionChecker(this);
+	public AssetSetter aSetter = new AssetSetter(this);
+	public SuperObject obj[] = new SuperObject[10];
 
 	public GamePanel() {
 
@@ -46,32 +49,12 @@ public class GamePanel extends JPanel implements Runnable {
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
 		this.setFocusable(true);
+
 	}
-	
-	/*
-	public void zoomInoOut(int i) {
-		 
-		
-		int oldWorldWidth = tileSize * maxWorldCol;
-		
-		tileSize += i;
-		int newWorldWidth = tileSize * maxWorldCol;
-		
-		double multiplier = (double)newWorldWidth/oldWorldWidth;
-	
-		
-		double newPlayerWorldX = player.worldX * multiplier;
-		double newPlayerWorldY = player.worldY * multiplier;
-		
-		
-		player.worldX = newPlayerWorldX;
-		player.worldY = newPlayerWorldY;
-		
-		player.speed = (double)newWorldWidth/600;
+
+	public void setupGame() {
+		aSetter.setObject();
 	}
-	
-	*/
-	
 
 	public void startGameThread() {
 
@@ -153,6 +136,12 @@ public class GamePanel extends JPanel implements Runnable {
 		Graphics2D g2 = (Graphics2D) g;
 
 		tileM.draw(g2);
+
+		for (int i = 0; i < obj.length; i++) {
+			if (obj[i] != null) {
+				obj[i].draw(g2, this);
+			}
+		}
 
 		player.draw(g2);
 

@@ -69,7 +69,7 @@ public class TileManager {
 				String line = br.readLine();
 
 				while (col < gp.maxWorldCol) {
-
+   
 					String numbers[] = line.split(" ");
 
 					int num = Integer.parseInt(numbers[col]); 
@@ -90,7 +90,7 @@ public class TileManager {
 		}
 	}
 
-	public void draw(Graphics2D g2) {
+	public void draw(Graphics2D g2) { // --
 		
 
 		int worldCol = 0; 
